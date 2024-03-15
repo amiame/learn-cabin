@@ -1,2 +1,2 @@
-# learn-cabin
+# learn-casbin
 Play around with Casbin
