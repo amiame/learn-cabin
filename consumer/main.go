@@ -8,10 +8,15 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/casbin/casbin/v2"
 	kafka "github.com/segmentio/kafka-go"
 )
 
+var _enforcer *casbin.Enforcer
+
 func main() {
+	setupCasbin()
+
 	// make a new reader that consumes from topic-A
 	r := kafka.NewReader(kafka.ReaderConfig{
 		Brokers:   []string{"localhost:9092", "localhost:9093", "localhost:9094"},
@@ -48,9 +53,24 @@ func main() {
 		}
 		//fmt.Printf("message at topic/partition/offset %v/%v/%v: %s = %s\n", m.Topic, m.Partition, m.Offset, string(m.Key), string(m.Value))
 		fmt.Printf("Received message: %s\n", string(m.Value))
+		renewEnforcer()
 	}
 
 	if err := r.Close(); err != nil {
 		log.Fatal("failed to close reader:", err)
 	}
+}
+
+func setupCasbin() {
+	e, err := casbin.NewEnforcer("../config/rbac_model.conf", "../config/initial_policy.csv")
+	if err != nil {
+		log.Fatal("failed to create enforcer:", err)
+	}
+
+	_enforcer = e
+}
+
+func renewEnforcer() {
+	_enforcer.LoadPolicy()
+	fmt.Println("renewed enforcer with latest policy")
 }
