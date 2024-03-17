@@ -1,4 +1,4 @@
-module test-casbin
+module test-casbin-producer
 
 go 1.21.1
 
