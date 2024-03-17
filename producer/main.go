@@ -26,10 +26,6 @@ func main() {
 		}
 
 		editPolicy()
-
-		fmt.Print("A message has been sent to all MS telling them that casbin policy has been updated\n")
-		time.Sleep(time.Second * 2)
-		fmt.Print("\n")
 	}
 }
 
@@ -89,4 +85,8 @@ func produce() {
 	if err := conn.Close(); err != nil {
 		log.Fatal("failed to close writer:", err)
 	}
+
+	fmt.Print("A message has been sent to all MS telling them that casbin policy has been updated\n")
+	time.Sleep(time.Second * 2)
+	fmt.Print("\n")
 }
