@@ -1,6 +1,6 @@
 package main
 
-import "github.com/casbin/casbin/v3/persist"
+import "github.com/casbin/casbin/v2/persist"
 
 type watcher struct {
 	persist.Watcher
@@ -29,20 +29,20 @@ func (w *watcher) Close() {
          they do not have to update their whole policy
 // UpdateForAddPolicy calls the update callback of other instances to synchronize their policy.
 // It is called after Enforcer.AddPolicy()
-func (w *watcher) UpdateForAddPolicy(params ...string) error {
+func (w *watcher) UpdateForAddPolicy(sec, ptype string, params ...string) error {
 	produce()
 	return nil
 }
 
 // UPdateForRemovePolicy calls the update callback of other instances to synchronize their policy.
 // It is called after Enforcer.RemovePolicy()
-func (w *watcher) UpdateForRemovePolicy(params ...string) error {
+func (w *watcher) UpdateForRemovePolicy(sec, ptype string, params ...string) error {
 	return nil
 }
 
 // UpdateForRemoveFilteredPolicy calls the update callback of other instances to synchronize their policy.
 // It is called after Enforcer.RemoveFilteredNamedGroupingPolicy()
-func (w *watcher) UpdateForRemoveFilteredPolicy(fieldIndex int, fieldValues ...string) error {
+func (w *watcher) UpdateForRemoveFilteredPolicy(sec, ptype string, fieldIndex int, fieldValues ...string) error {
 	return nil
 }
 
@@ -50,5 +50,17 @@ func (w *watcher) UpdateForRemoveFilteredPolicy(fieldIndex int, fieldValues ...s
 // It is called after Enforcer.RemoveFilteredNamedGroupingPolicy()
 func (w *watcher) UpdateForSavePolicy(model model.Model) error {
 	return nil
+}
+
+	// UpdateForAddPolicies calls the update callback of other instances to synchronize their policy.
+	// It is called after Enforcer.AddPolicies()
+func (w *watcher) UpdateForAddPolicies(sec string, ptype string, rules ...[]string) error {
+  return nli
+}
+
+// UpdateForRemovePolicies calls the update callback of other instances to synchronize their policy.
+// It is called after Enforcer.RemovePolicies()
+func (w *watcher) UpdateForRemovePolicies(sec string, ptype string, rules ...[]string) error {
+  return nil
 }
 */

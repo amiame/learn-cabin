@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/casbin/casbin/v3"
+	"github.com/casbin/casbin/v2"
 	kafka "github.com/segmentio/kafka-go"
 )
 
