@@ -62,7 +62,7 @@ func main() {
 }
 
 func setupCasbin() {
-	e, err := casbin.NewEnforcer("../config/rbac_model.conf", "../config/initial_policy.csv")
+	e, err := casbin.NewEnforcer("./config/rbac_model.conf", "./config/initial_policy.csv")
 	if err != nil {
 		log.Fatal("failed to create enforcer:", err)
 	}
