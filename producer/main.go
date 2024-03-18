@@ -86,7 +86,7 @@ func produce() {
 		log.Fatal("failed to close writer:", err)
 	}
 
-	fmt.Print("A message has been sent to all MS telling them that casbin policy has been updated\n")
+	fmt.Print("A message has been sent to Kafka to tell consumer MS them that they need to update their casbin policy")
 	time.Sleep(time.Second * 2)
 	fmt.Print("\n")
 }
