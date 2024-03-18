@@ -29,3 +29,4 @@ make consumer
 
 4. On Shell 1, press enter to simulate an API call that triggers policy update.
 5. You should see in Shell 2 that the consumer receives a message to update its policy.
+  - I've saved consumer's policy in `./consumer/consumer_policy.csv`. You can compare it with the producer's policy which is `./config/initial_policy.csv`.
