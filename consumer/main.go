@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 
 	"github.com/casbin/casbin/v2"
@@ -56,6 +57,9 @@ func main() {
 		//fmt.Printf("message at topic/partition/offset %v/%v/%v: %s = %s\n", m.Topic, m.Partition, m.Offset, string(m.Key), string(m.Value))
 		fmt.Printf("Received message: %s\n", string(m.Value))
 		renewEnforcer()
+
+		// Just for us to see latest consumer policy
+		writeToFile()
 	}
 
 	if err := r.Close(); err != nil {
@@ -75,4 +79,31 @@ func setupCasbin() {
 func renewEnforcer() {
 	_enforcer.LoadPolicy()
 	fmt.Println("renewed enforcer with latest policy")
+}
+
+func writeToFile() {
+	f, err := os.Create("./consumer/consumer_policy.csv")
+	if err != nil {
+		log.Fatal("error creating file:", err)
+	}
+
+	defer f.Close()
+
+	policyTypes := map[string]func() [][]string{
+		"p": _enforcer.GetPolicy,
+		"g": _enforcer.GetGroupingPolicy,
+	}
+
+	for policyType, policyFunction := range policyTypes {
+		rules := policyFunction()
+		for _, rule := range rules {
+			str := fmt.Sprintf("%s, %s\n", policyType, strings.Join(rule, ", "))
+			_, err := f.WriteString(str)
+			if err != nil {
+				log.Fatal("error writing string:", err)
+			}
+		}
+	}
+
+	f.Sync()
 }
