@@ -24,6 +24,8 @@ func main() {
 		Topic:     "messages",
 		MaxBytes:  10e6, // 10MB
 	})
+	fmt.Println("connected to Kafka. Waiting for message...")
+
 	// Set last offset so we don't get old messages
 	if err := r.SetOffset(kafka.LastOffset); err != nil {
 		log.Fatal("failed to close reader:", err)
