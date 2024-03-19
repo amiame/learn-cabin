@@ -1,16 +1,16 @@
 # learn-casbin
 Play around with Casbin
 
-# Synchronizing Casbin Enforcers with Kafka
+# Synchronizing Casbin Enforcers with RabbitMQ
 
 This is the idea:
-![Casbin Enforcers synchronization using Kafka](assets/casbin-kafka.svg "Casbin Enforcers synchronization using Kafka")
+![Casbin Enforcers synchronization using RabbitMQ](assets/casbin-rabbitmq.svg "Casbin Enforcers synchronization using RabbitMQ")
 
 ## How to set it up
-1. Set up Kafka by running:
+1. Set up RabbitMQ by running:
 
 ```bash
-make kafka
+make rabbitmq
 ```
 
 2. Set up producer by running:

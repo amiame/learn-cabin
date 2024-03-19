@@ -1,8 +1,8 @@
 all:
 	@docker compose up -d
 
-kafka:
-	@docker compose up -d kafka kafka-init-topics kafka-ui
+rabbitmq:
+	@docker compose up -d rabbitmq
 
 producer:
 	@go run ./producer
