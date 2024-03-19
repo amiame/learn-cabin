@@ -1,0 +1,8 @@
+p, alice, client-createClient, use
+p, xxx-admin, xxx-xxxApi, use
+p, 2024-03-18 13:59:20.357433 +0900 JST m=+5.449049751, xxx-xxxApi, use
+p, 2024-03-18 14:00:38.345159 +0900 JST m=+83.445005918, xxx-xxxApi, use
+p, 2024-03-18 14:04:35.058955 +0900 JST m=+320.159830668, xxx-xxxApi, use
+p, 2024-03-18 14:05:36.424787 +0900 JST m=+381.525878709, xxx-xxxApi, use
+p, 2024-03-18 14:09:28.100908 +0900 JST m=+613.202813084, xxx-xxxApi, use
+g, alice, xxx-admin
