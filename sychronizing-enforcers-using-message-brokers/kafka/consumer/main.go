@@ -77,7 +77,9 @@ func setupCasbin() {
 }
 
 func renewEnforcer() {
-	_enforcer.LoadPolicy()
+	if err := _enforcer.LoadPolicy(); err != nil {
+		log.Fatal("failed to sync file")
+	}
 	fmt.Println("renewed enforcer with latest policy")
 }
 
@@ -105,5 +107,7 @@ func writeToFile() {
 		}
 	}
 
-	f.Sync()
+	if err := f.Sync(); err != nil {
+		log.Fatal("failed to sync file")
+	}
 }

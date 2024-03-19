@@ -1,0 +1,3 @@
+p, alice, client-createClient, use
+p, xxx-admin, xxx-xxxApi, use
+g, alice, xxx-admin
