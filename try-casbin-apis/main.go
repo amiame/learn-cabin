@@ -22,6 +22,7 @@ func main() {
 	e.SetFieldIndex("p", "app", 1)
 
 	getUserRoles(e, "app1", "doc", "doc1", "amir")
+	getUserRoles(e, "app1", "doc", "doc1", "allan")
 	getRoleUsers(e, "app1", "doc", "doc1", "owner")
 	getObjectRoles(e, "app1", "doc", "doc1")
 

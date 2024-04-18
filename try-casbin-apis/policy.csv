@@ -2,4 +2,6 @@ p, app1, doc:doc1-owner, doc-update, doc:doc1
 p, app1, doc:doc1-owner, doc-read, doc:doc1
 
 g, amir, doc:doc1-owner, app1 
+g, amir, doc:doc1-member, app1 
 g, allan, doc:doc1-owner, app1 
+g, allan, doc:doc1-leader, app1 
