@@ -30,7 +30,7 @@ func main() {
 
 func getUserRoles(e *casbin.Enforcer, app string, object string, instance string, user string) {
 	// How to get roles of a user
-	// Given object ID, instance ID, and user ID
+	// Given object ID, instance ID, app ID, and user ID
 	rm := e.GetRoleManager()
 	roles, err := rm.GetRoles(user, app)
 	if len(roles) == 0 {
