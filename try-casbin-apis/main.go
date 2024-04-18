@@ -18,7 +18,6 @@ func main() {
 	e, err := casbin.NewEnforcer("model.conf", "policy.csv")
 	exitIfError(err)
 
-	//res, err := e.Enforce(enforceContext, "workbench", "alice", "survey-create", "survey/56")
 	e.SetFieldIndex("p", "app", 1)
 
 	getUserRoles(e, "app1", "doc", "doc1", "amir")
